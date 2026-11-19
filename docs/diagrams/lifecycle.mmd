@@ -1,0 +1,13 @@
+stateDiagram-v2
+  [*] --> draft: save draft
+  [*] --> pending: submit with proof
+  draft --> pending: submit
+  pending --> approved: faculty approves
+  pending --> rejected: faculty rejects (remarks)
+  pending --> correction_requested: faculty asks for changes (remarks)
+  correction_requested --> resubmitted: student resubmits (new version)
+  resubmitted --> approved
+  resubmitted --> rejected
+  resubmitted --> correction_requested
+  approved --> [*]
+  rejected --> [*]

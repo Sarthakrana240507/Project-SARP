@@ -1,0 +1,14 @@
+flowchart LR
+  subgraph Browser
+    UI["Next.js pages<br/>(Student / Faculty / Admin)"]
+  end
+  subgraph API["Express API :5001"]
+    MW["JWT auth + role guard<br/>rate limits"]
+    R["Route modules<br/>auth, activities, admin*, analytics,<br/>portfolio, notifications, support"]
+    U["Utilities<br/>SHA-256, magic bytes, PDFKit,<br/>CSV safe export, audit"]
+  end
+  DB[("PostgreSQL<br/>users, activities, versions,<br/>audit logs, tokens, tickets")]
+  FS[["Proof + avatar files<br/>(local disk, outside web root)"]]
+  UI -- "HTTPS + Bearer JWT" --> MW --> R --> U
+  R --> DB
+  U --> FS

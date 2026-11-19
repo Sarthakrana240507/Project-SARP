@@ -1,0 +1,36 @@
+erDiagram
+  users ||--o{ activities : "student_id"
+  users ||--o{ activities : "reviewer_id"
+  activities ||--o{ activity_versions : "activity_id"
+  activities ||--o{ audit_log : "activity_id"
+  users ||--o{ notifications : "user_id"
+  users ||--o{ auth_tokens : "user_id"
+  users ||--o{ faculty_scopes : "faculty_id"
+  users ||--o{ support_tickets : "user_id"
+  users ||--o{ import_batches : "uploaded_by"
+  users {
+    int id PK
+    text email UK
+    text role
+    text status
+    text department
+    bool is_super_admin
+  }
+  activities {
+    int id PK
+    int student_id FK
+    text status
+    int version
+    text file_hash
+    bool is_duplicate
+  }
+  activity_versions {
+    int activity_id FK
+    int version
+    text file_hash
+  }
+  audit_log {
+    int activity_id FK
+    text old_status
+    text new_status
+  }

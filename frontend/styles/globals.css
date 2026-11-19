@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background: rgb(var(--canvas));
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--canvas));
+  color: rgb(var(--ink));
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--canvas));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--line-strong));
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--ink-muted));
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply min-h-screen bg-canvas;
+  }
+
+  .page-wrap {
+    @apply mx-auto w-full max-w-[1400px] px-4 py-6 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-surface shadow-card transition-all duration-200;
+  }
+
+  .card-pad {
+    @apply p-5 sm:p-6 lg:p-7;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.16em] text-brand-text;
+  }
+
+  .page-title {
+    @apply mt-1 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl;
+  }
+
+  .page-subtitle {
+    @apply mt-1.5 text-xs text-ink-secondary sm:text-sm;
+  }
+
+  .section-title {
+    @apply text-base font-bold text-ink-strong;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl bg-navy px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-all duration-150 hover:bg-navy-hover hover:shadow focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl border border-line bg-surface px-4 py-2.5 text-xs font-semibold text-ink shadow-sm transition-all duration-150 hover:border-line-strong hover:bg-surface-alt hover:text-ink-strong focus:outline-none focus:ring-2 focus:ring-line-strong active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100;
+  }
+
+  .btn-teal {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl bg-accent px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-all duration-150 hover:bg-accent-strong hover:shadow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-success {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl bg-solid-success px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-all duration-150 hover:bg-solid-success-hover hover:shadow focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl bg-solid-danger px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-all duration-150 hover:bg-solid-danger-hover hover:shadow focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-[11px] font-bold uppercase tracking-wider text-ink-secondary;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-xs text-ink outline-none transition-all duration-150 placeholder:text-ink-muted focus:border-brand focus:ring-2 focus:ring-brand-soft;
+  }
+
+  .stat-card {
+    @apply card relative overflow-hidden p-5 transition-all duration-200 hover:shadow-cardHover hover:-translate-y-0.5;
+  }
+
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider;
+  }
+
+  .status-pending {
+    @apply border border-warn-line bg-warn-soft text-warn-text;
+  }
+
+  .status-approved {
+    @apply border border-success-line bg-success-soft text-success-text;
+  }
+
+  .status-rejected {
+    @apply border border-danger-line bg-danger-soft text-danger-text;
+  }
+
+  .toast {
+    @apply fixed bottom-5 right-5 z-50 flex items-center gap-2.5 max-w-md rounded-xl border border-navy-hover bg-navy px-4 py-3 text-xs font-medium text-white shadow-xl;
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+}

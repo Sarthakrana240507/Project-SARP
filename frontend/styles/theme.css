@@ -1,0 +1,118 @@
+/*
+  SARP colour tokens. Components use semantic Tailwind classes (bg-surface, text-ink-strong, border-line ...);
+  those classes read the variables below, so switching theme only swaps this table.
+  Values are "R G B" so Tailwind opacity modifiers work (bg-surface/80).
+  <html data-theme="light|dark"> is set before first paint by the inline script in pages/_document.js.
+*/
+/* Light: warm neutral canvas, white cards, muted teal primary, soft-blue secondary.
+   Secondary text is a little darker than the brief's #75818A so it keeps 4.5:1 contrast (WCAG AA) on every surface. */
+:root {
+  color-scheme: light;
+
+  /* surfaces */
+  --canvas: 244 246 245;        /* page background        #F4F6F5 */
+  --surface: 255 255 255;       /* cards, inputs          #FFFFFF */
+  --surface-alt: 249 250 249;   /* hover rows, subtle fill #F9FAF9 */
+  --surface-sub: 238 242 240;   /* tracks, chips          #EEF2F0 */
+  --line: 227 233 230;          /* borders                #E3E9E6 */
+  --line-soft: 238 242 240;     /* dividers               #EEF2F0 */
+  --line-strong: 203 213 209;   /* hovered borders        #CBD5D1 */
+
+  /* text */
+  --ink: 39 51 58;              /* #27333A */
+  --ink-strong: 30 41 47;       /* headings #1E292F */
+  --ink-body: 63 77 85;         /* #3F4D55 */
+  --ink-secondary: 90 103 112;  /* #5A6770 (5.9:1 on white, 5.3:1 on the canvas) */
+  --ink-muted: 98 111 120;      /* #626F78 */
+
+  /* primary: muted teal (brand-*), secondary: soft blue (accent-*) */
+  --navy: 71 122 117;           /* primary buttons, white text 4.9:1  #477A75 */
+  --navy-hover: 61 107 102;     /* #3D6B66 */
+  --navy-dark: 47 84 80;        /* #2F5450 */
+  --hero-from: 47 85 81;        /* decorative panels with white text */
+  --hero-via: 58 101 96;
+  --brand: 71 122 117;          /* #477A75 (fills, borders, focus) */
+  --brand-text: 58 101 96;      /* #3A6560 (teal used as text) */
+  --brand-strong: 47 85 81;
+  --brand-soft: 232 241 238;    /* soft teal #E8F1EE */
+  --brand-subtle: 220 234 230;
+  --brand-line: 200 220 215;
+  --accent: 91 110 145;         /* soft blue fills carrying white text #5B6E91 */
+  --accent-text: 74 93 128;     /* #4A5D80 */
+  --accent-strong: 63 80 112;
+  --accent-soft: 237 241 247;   /* soft blue #EDF1F7 */
+  --accent-line: 211 221 235;
+
+  /* status tones: soft = background, line = border, text */
+  --danger-soft: 254 242 242;  --danger-text: 185 28 28;   --danger-line: 254 202 202;
+  --success-soft: 236 253 245; --success-text: 4 120 87;   --success-line: 167 243 208;
+  --warn-soft: 255 251 235;    --warn-text: 180 83 9;      --warn-line: 253 230 138;
+  --flame-soft: 255 247 237;   --flame-text: 194 65 12;    --flame-line: 254 215 170;
+  --violet-soft: 245 243 255;  --violet-text: 124 58 237;  --violet-line: 221 214 254;
+  --pink-soft: 253 242 248;    --pink-text: 190 24 93;     --pink-line: 251 207 232;
+
+  /* solid fills that carry white text (buttons, count badges) */
+  --solid-danger: 190 18 60;   --solid-danger-hover: 159 18 57;
+  --solid-success: 4 120 87;   --solid-success-hover: 6 95 70;
+  --solid-flame: 194 65 12;    --solid-flame-hover: 154 52 18;
+
+  --shadow: 39 51 58;
+
+  /* charts (read from JavaScript by lib/theme.js) */
+  --chart-grid: 227 233 230;
+  --chart-axis: 90 103 112;
+  --chart-tooltip-bg: 39 51 58;
+  --chart-tooltip-text: 255 255 255;
+}
+
+/* Dark: deep neutral slate with a hint of green, teal and soft-blue accents. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --canvas: 17 24 23;           /* #111817 */
+  --surface: 25 35 34;          /* #192322 cards */
+  --surface-alt: 31 43 41;      /* #1F2B29 */
+  --surface-sub: 38 52 50;      /* #263432 */
+  --line: 50 66 63;             /* #32423F */
+  --line-soft: 40 54 52;        /* #283634 */
+  --line-strong: 68 88 84;      /* #445854 */
+
+  --ink: 224 232 229;           /* #E0E8E5 */
+  --ink-strong: 241 246 244;    /* #F1F6F4 */
+  --ink-body: 196 208 204;      /* #C4D0CC */
+  --ink-secondary: 160 176 171; /* #A0B0AB */
+  --ink-muted: 138 154 149;     /* #8A9A95 */
+
+  --navy: 61 120 113;           /* buttons keep white text readable #3D7871 */
+  --navy-hover: 74 138 130;     /* #4A8A82 */
+  --navy-dark: 17 24 23;
+  --hero-from: 29 50 48;
+  --hero-via: 36 62 59;
+  --brand: 95 170 160;          /* #5FAAA0 */
+  --brand-text: 125 188 180;    /* #7DBCB4 teal as text */
+  --brand-strong: 160 213 206;
+  --brand-soft: 28 48 46;       /* #1C302E */
+  --brand-subtle: 36 62 59;
+  --brand-line: 52 88 84;
+  --accent: 80 100 140;         /* #50648C */
+  --accent-text: 150 170 205;   /* #96AACD */
+  --accent-strong: 180 196 224;
+  --accent-soft: 30 38 55;      /* #1E2637 */
+  --accent-line: 52 64 90;
+
+  --danger-soft: 58 28 38;     --danger-text: 248 140 156;  --danger-line: 107 42 58;
+  --success-soft: 15 51 38;    --success-text: 110 231 183; --success-line: 29 92 67;
+  --warn-soft: 58 45 15;       --warn-text: 246 196 83;     --warn-line: 107 83 22;
+  --flame-soft: 59 36 18;      --flame-text: 253 186 116;   --flame-line: 122 68 32;
+  --violet-soft: 42 33 80;     --violet-text: 196 181 253;  --violet-line: 75 60 143;
+  --pink-soft: 58 27 51;       --pink-text: 249 168 212;    --pink-line: 109 47 94;
+
+  --solid-danger: 214 40 80;   --solid-danger-hover: 190 18 60;
+
+  --shadow: 0 0 0;
+
+  --chart-grid: 50 66 63;
+  --chart-axis: 160 176 171;
+  --chart-tooltip-bg: 38 52 50;
+  --chart-tooltip-text: 241 246 244;
+}
